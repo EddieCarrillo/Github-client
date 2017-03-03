@@ -102,7 +102,7 @@ class GithubRepo: CustomStringConvertible {
         return "[Name: \(self.name!)]" +
             "\n\t[Stars: \(self.stars!)]" +
             "\n\t[Forks: \(self.forks!)]" +
-            "\n\t[Description: \(self.repoDescription!)]" +
+          //  "\n\t[Description: \(self.repoDescription ?? 0)]" +
             "\n\t[Owner: \(self.ownerHandle!)]" +
             "\n\t[Avatar: \(self.ownerAvatarURL!)]"
     }

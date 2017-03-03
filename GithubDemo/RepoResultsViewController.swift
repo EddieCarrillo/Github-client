@@ -10,11 +10,12 @@ import UIKit
 import MBProgressHUD
 
 // Main ViewController
-class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsPresentingViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
+
 
     var repos: [GithubRepo]!
 
@@ -44,6 +45,10 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         doSearch()
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("View came back!")
+    }
 
     // Perform the search.
     fileprivate func doSearch() {
@@ -60,8 +65,9 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
             }   
 
             self.tableView.reloadData()
+            
             MBProgressHUD.hide(for: self.view, animated: true)
-            }, error: { (error) -> Void in
+            }, error: { (error) -> Void in/Applications/Image Capture.app
                 print(error)
         })
     }
@@ -87,6 +93,25 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         let repo = self.repos[indexPath.row]
         cell.repo = repo
         return cell
+        
+    }
+    
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+        let navController = segue.destination as! UINavigationController
+        let vc = navController.topViewController as! SearchSettingsViewController
+        vc.settings = searchSettings
+        vc.delegate = self
+    }
+    
+    func didSaveSettings(settings: GithubRepoSearchSettings) {
+        self.searchSettings = settings
+        print("min stars: \(settings.minStars)")
+        
+        doSearch()
+        
+    }
+    
+    func didCancelSettings() {
         
     }
     
@@ -116,4 +141,6 @@ extension RepoResultsViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         doSearch()
     }
+    
+    
 }

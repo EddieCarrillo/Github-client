@@ -26,7 +26,13 @@ class RepoCell: UITableViewCell {
             repoNameLabel.text = repo.name!
             repoOwnerLabel.text = "by \(repo.ownerHandle!)"
             forkCountLabel.text = "\(repo.forks!)"
-            repoDescriptionLabel.text = repo.repoDescription!
+            if let description = repo.repoDescription{
+                 repoDescriptionLabel.text = description
+            }else{
+                repoDescriptionLabel.text = "blah blah"
+                
+            }
+            
             
             
         

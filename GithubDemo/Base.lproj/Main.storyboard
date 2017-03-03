@@ -129,7 +129,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="x5q-EH-pP8"/>
+                    <navigationItem key="navigationItem" id="x5q-EH-pP8">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="Xvi-kg-bHT">
+                            <connections>
+                                <segue destination="xS2-sf-ihd" kind="presentation" id="OBW-YH-o6C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="KXq-NM-b8i" id="Rua-Ua-Nmb"/>
                     </connections>
@@ -137,6 +143,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="817.5" y="-557.74647887323943"/>
+        </scene>
+        <!--Search Settings View Controller-->
+        <scene sceneID="NKC-8X-nfz">
+            <objects>
+                <viewController id="saY-sm-yoM" customClass="SearchSettingsViewController" customModule="GithubDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g9i-xu-dPG"/>
+                        <viewControllerLayoutGuide type="bottom" id="z8K-tW-f8F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zi7-sR-9dC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="wzU-AU-lC5">
+                                <rect key="frame" x="24" y="101" width="118" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="onSlide:" destination="saY-sm-yoM" eventType="valueChanged" id="HHx-Kx-8h9"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ratings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBe-fH-Qet">
+                                <rect key="frame" x="216" y="106" width="53" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zBn-NT-o7X">
+                        <barButtonItem key="leftBarButtonItem" title="Save" id="xen-YN-oEB">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="saY-sm-yoM" id="BWR-0Z-7W0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="wcg-KJ-zGu">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="saY-sm-yoM" id="Yiw-vr-0P9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="rating" destination="BBe-fH-Qet" id="cOv-Q5-1Bs"/>
+                        <outlet property="slider" destination="wzU-AU-lC5" id="HqI-AF-S5n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TpY-Dw-qHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2533.125" y="-558.80281690140851"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FpP-oR-azb">
@@ -155,6 +211,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dru-y2-L7C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="-557"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Mpp-kU-UHy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xS2-sf-ihd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kjg-p3-Bdw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="saY-sm-yoM" kind="relationship" relationship="rootViewController" id="28a-a9-K5p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CIW-eb-IWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1535.625" y="-558.80281690140851"/>
         </scene>
     </scenes>
     <resources>
